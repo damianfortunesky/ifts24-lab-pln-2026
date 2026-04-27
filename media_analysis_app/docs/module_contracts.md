@@ -22,10 +22,11 @@
   "source": "lanacion",
   "url": "https://...",
   "title": "Titular",
-  "published_at": null,
   "clean_text": "texto normalizado",
   "tokens_count": 543,
-  "language": "es"
+  "language": "es",
+  "fetched_at": "2026-04-27T10:00:00Z",
+  "date": "2026-04-27"
 }
 ```
 
@@ -38,7 +39,8 @@
     {"text": "Argentina", "label": "LOC"}
   ],
   "pos_counts": {"NOUN": 120, "VERB": 80},
-  "sentiment": null
+  "topic": "economia",
+  "content_tokens": ["economía", "mercado"]
 }
 ```
 
@@ -72,8 +74,16 @@
 - **Input**: `list[CleanDocument]` + `spacy_model`
 - **Output**:
   1. `list[NLPDocument]`
-  2. `pandas.DataFrame` de features por documento:
-     - `doc_id`, `source`, `tokens_count`, `unique_lemmas`, `top_entity_type`
+  2. `DataFrame` de features por documento:
+     - `doc_id`, `source`, `date`, `tokens_count`, `unique_lemmas`, `entities_count`, `topic`
+  3. Tablas agregadas:
+     - `term_frequencies` (término, frecuencia)
+     - `lemma_frequencies` (lema, frecuencia)
+     - `entity_frequencies` (entidad, tipo, frecuencia)
+     - `topic_distribution` (medio, tópico, docs, promedio_tokens)
+     - `comparison_by_source_date` (medio, fecha, métricas comparativas)
+  4. `visualization_payload` serializable para gráficos (barras y líneas)
+  5. `warnings` con límites metodológicos y recomendaciones para español.
 
 ## 4) visualization
 - **Input**: `DataFrame` de features + colección de términos/entidades.
@@ -85,7 +95,8 @@
 - **Input**:
   - DataFrames agregados,
   - top términos,
-  - top entidades.
+  - top entidades,
+  - warnings + payload para visualización.
 - **Output**: `InsightReport`
 
 ```json
@@ -97,6 +108,15 @@
   "source_comparison": [
     {"source": "lanacion", "docs": 10, "avg_tokens": 450}
   ],
-  "warnings": []
+  "source_date_comparison": [
+    {"source": "lanacion", "date": "2026-04-27", "docs": 10, "avg_tokens": 450}
+  ],
+  "visualization_payload": {
+    "bar_terms": [],
+    "stacked_topics": []
+  },
+  "warnings": [
+    "Limitación metodológica: tópicos heurísticos."
+  ]
 }
 ```

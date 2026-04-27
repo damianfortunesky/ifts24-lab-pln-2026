@@ -15,6 +15,8 @@ class CleanDocument:
     clean_text: str
     tokens_count: int
     language: str | None
+    fetched_at: str
+    date: str
 
 
 def clean_document(raw_doc: RawDocument) -> CleanDocument:
@@ -29,4 +31,6 @@ def clean_document(raw_doc: RawDocument) -> CleanDocument:
         clean_text=clean_text,
         tokens_count=tokens_count,
         language=raw_doc.language,
+        fetched_at=raw_doc.fetched_at,
+        date=raw_doc.fetched_at[:10],
     )
