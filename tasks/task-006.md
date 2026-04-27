@@ -32,6 +32,10 @@ Restricciones:
 
 > Ejecutar desde `media_analysis_app/` salvo que se indique otra ruta.
 
+> Si ejecutás sin instalar el paquete, definir `PYTHONPATH=src` para comandos `python -m media_analysis_app...`.
+> - Bash/zsh: `export PYTHONPATH=src`
+> - PowerShell: `$env:PYTHONPATH='src'`
+
 ### 1) Pre-ejecución técnica
 
 1. **Confirmar versión de Python y entorno activo**
@@ -71,6 +75,7 @@ Restricciones:
 
 1. **Correr pipeline por CLI con URL válida**
    ```bash
+   export PYTHONPATH=src  # PowerShell: $env:PYTHONPATH='src'
    python -m media_analysis_app.interfaces.cli analyze --source smoke https://example.com
    ```
    Esperado:
@@ -156,6 +161,7 @@ Criterio esperado:
 
 #### CLI
 ```bash
+export PYTHONPATH=src  # PowerShell: $env:PYTHONPATH='src'
 python -m media_analysis_app.interfaces.cli --help
 python -m media_analysis_app.interfaces.cli analyze --source test https://example.com
 python -m media_analysis_app.interfaces.cli analyze --source test nota-sin-url
