@@ -125,6 +125,66 @@ ifts24-lab-pln-2026/
 
 ---
 
+## Manual de ejecución y operación de la app
+
+Este repositorio incluye una app demostrativa en `media_analysis_app/` para ejecutar el flujo completo: **ingesta → limpieza → NLP → visualización → interpretación**.
+
+### 1) Preparación específica de la app
+
+Desde la raíz del repo:
+
+```bash
+cd media_analysis_app
+pip install -r requirements.txt
+python -m spacy download es_core_news_md
+```
+
+> Si no vas a usar el modelo mediano, también podés configurar uno más liviano (`es_core_news_sm`) desde variables de entorno.
+
+### 2) Variables de entorno recomendadas
+
+Creá un archivo `.env` en `media_analysis_app/` (si no existe) con una base como esta:
+
+```env
+SPACY_MODEL=es_core_news_md
+LOG_LEVEL=INFO
+REQUEST_TIMEOUT=20
+MAX_URLS=10
+```
+
+### 3) Ejecución de la interfaz (modo operativo principal)
+
+```bash
+python app.py
+```
+
+Luego abrí en navegador la URL local que imprime Gradio (por ejemplo `http://127.0.0.1:7860`).
+
+### 4) Operación sugerida paso a paso
+
+1. Cargá una o más URLs en el formulario.
+2. Definí rango de fechas y límite de notas.
+3. Ejecutá por etapas (preparar → scraping/limpieza → NLP/dashboard) o ejecución completa.
+4. Revisá tablas/gráficos de términos, entidades y evolución temporal.
+5. Exportá resultados en CSV/JSON para entregar evidencia del análisis.
+
+### 5) Verificación rápida de funcionamiento
+
+Antes de una demo o entrega final, validá:
+
+- Que el modelo spaCy esté instalado y cargue sin error.
+- Que al menos una URL procese texto con longitud razonable.
+- Que se generen métricas/tablas y al menos un gráfico.
+- Que la exportación CSV/JSON finalice correctamente.
+
+### 6) Cierre operativo
+
+- Guardá artifacts relevantes (gráficos/reportes) para trazabilidad.
+- Si hubo errores, registrá URL, etapa y mensaje para depuración reproducible.
+- Ejecutá `git pull` antes de una nueva sesión para trabajar sobre la última versión del material.
+
+---
+
 ## Resolución de problemas frecuentes
 
 **"python no se reconoce como comando"**
