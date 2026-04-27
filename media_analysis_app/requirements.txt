@@ -10,4 +10,5 @@ spacy
 nltk
 trafilatura
 typer
+gradio
 wordcloud

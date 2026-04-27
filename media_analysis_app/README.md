@@ -195,3 +195,30 @@ Buenas prácticas:
 6. Emitir reporte en `artifacts/reports/report.md` y `report.json`.
 
 Con esto queda una base didáctica alineada al curso, sin sobreingeniería.
+
+
+## 8) Interfaz Gradio (Task 004)
+
+Se agregó una interfaz usable para operar el pipeline de punta a punta con foco en usuarios no técnicos.
+
+### Archivos principales
+
+- `app.py`: entrypoint ejecutable.
+- `src/media_analysis_app/interfaces/gradio_app.py`: componentes visuales y callbacks de UI.
+- `src/media_analysis_app/interfaces/gradio_service.py`: lógica de negocio por etapas (preparación, scraping, NLP, dashboard y exportación).
+
+### Ejecución local
+
+```bash
+cd media_analysis_app
+python app.py
+```
+
+### Flujo soportado
+
+1. Formulario de entrada con fuentes, rango de fechas, cantidad máxima de notas y URLs manuales.
+2. Ejecución por etapas (preparar → scraping/limpieza → NLP/dashboard) o ejecución completa.
+3. Dashboard con tablas y gráficos de frecuencias, entidades y evolución temporal.
+4. Exportación de resultados en CSV y JSON.
+5. Mensajes de estado y errores amigables para cada etapa.
+
