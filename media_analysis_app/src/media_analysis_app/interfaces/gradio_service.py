@@ -19,24 +19,14 @@ from media_analysis_app.processing.cleaner import CleanDocument, clean_document
 
 SOURCE_CATALOG: list[dict[str, str]] = [
     {
-        "source": "lanacion",
-        "url": "https://www.lanacion.com.ar/politica/",
+        "source": "infobae",
+        "url": "https://www.infobae.com/economia/",
         "date": "2026-04-20",
     },
     {
         "source": "pagina12",
         "url": "https://www.pagina12.com.ar/secciones/el-pais",
         "date": "2026-04-18",
-    },
-    {
-        "source": "clarin",
-        "url": "https://www.clarin.com/politica/",
-        "date": "2026-04-16",
-    },
-    {
-        "source": "bbc-mundo",
-        "url": "https://www.bbc.com/mundo",
-        "date": "2026-04-15",
     },
 ]
 
