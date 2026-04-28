@@ -23,6 +23,7 @@ playwright
 # --- PLN ---
 nltk
 spacy
+scikit-learn
 
 # --- Visualización ---
 matplotlib
